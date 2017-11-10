@@ -4,7 +4,9 @@
 import base64
 import json
 import requests
-# from PIL import Image
+import os
+# ワイルドカードを利用
+from glob import glob
 
 TEGAKI_FORM_ENDPOINT = 'https://api.tegaki.ai/hwr/v1/form'
 MY_API_KEY = '3bfeec98-8832-4f05-8477-7f8309f7b914'
@@ -12,7 +14,16 @@ PROXIES = {
         'http': 'http://Takeshi_Umezaki:umezaki6@192.168.236.23:8080',
         'https': 'https://Takeshi_Umezaki:umezaki6@192.168.236.23:8080',
         }
+FORM_JSON_FILE_NAME = "sisco_format_fax.json"
+IMAGE_DIR = "C:\\Users\\Takeshi_Umezaki\\Documents\\ocr\\"
+# wild card
+FILES = "MpfRcvImgTFS0000023a*.jpg"
 
+_json_str = ""
+_request_id = ""
+_file_name = ""
+
+ 
 # base64-encoding files
 
 
@@ -40,15 +51,28 @@ def post_form(template_json_file, form_image_file):
     # Print the result
     print(response.status_code)
     print(response.json())
+    dict_res_json = response.json()
+    _request_id = dict_res_json['requestId']
+    print(_file_name, _request_id)
+
+    file_results = open("results.txt", "a", encoding="shift_jis")
+    file_results.write(_file_name + "," + _request_id + "\n")
+    file_results.close()
 
 
 if __name__ == '__main__':
     print("start")
-    json_str = ""
-    with open('sisco_format_fax.json', 'r', encoding="utf-8") as json_file:
-        json_str = str(json_file.read())
+    os.chdir(IMAGE_DIR)
 
-    print(len(json_str))
-    image_file = open('ocr.jpg', "rb")
+    with open(FORM_JSON_FILE_NAME, 'r', encoding="utf-8") as json_file:
+        _json_str = str(json_file.read())
 
-    post_form(json_str, image_file)
+    print(len(_json_str))
+    files = glob(FILES)
+    for file_name in files:
+        _file_name = file_name
+        print(_file_name)
+        image_file = open(_file_name, "rb")
+
+        post_form(_json_str, image_file)
+
