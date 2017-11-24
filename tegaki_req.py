@@ -14,10 +14,11 @@ PROXIES = {
         'http': 'http://Takeshi_Umezaki:umezaki6@192.168.236.23:8080',
         'https': 'https://Takeshi_Umezaki:umezaki6@192.168.236.23:8080',
         }
-FORM_JSON_FILE_NAME = "sisco_format_fax.json"
-IMAGE_DIR = "C:\\Users\\Takeshi_Umezaki\\Documents\\ocr\\"
+FORM_JSON_FILE_NAME = "karisinsa.json"
+IMAGE_DIR = "C:\\Users\\Takeshi_Umezaki\\Documents\\ocr\\demo\\forapi\\"
 # wild card
-FILES = "MpfRcvImgTFS0000023a*.jpg"
+# FILES = "MpfRcvImgTFS00000244_0001*.jpg"
+FILES = "*.jpg"
 
 _json_str = ""
 _request_id = ""
