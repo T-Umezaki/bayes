@@ -5,8 +5,8 @@ import unittest
 from selenium.webdriver.chrome.options import Options
 import codecs
 
-# HTTP_PROXY = 'user:pass@http://192.168.236.23:8080'
-# HTTPS_PROXY = 'user:pass@https://192.168.236.23:8080'
+# HTTP_PROXY = 'user:pass@http://*:8080'
+# HTTPS_PROXY = 'user:pass@https://*:8080'
 # PROXY_AUTH = 'user:pass'
 
 
@@ -28,7 +28,7 @@ class TestWebdriver(unittest.TestCase):
         # 減っだページからリスト読み込み
         pages = driver.find_elements_by_xpath("//ul[@class='emphasis']/li/a")
         
-        # encode でエラーが出るので、バイナリーで開く https://qiita.com/butada/items/33db39ced989c2ebf644
+        # encode でエラーが出るので、codec https://qiita.com/butada/items/33db39ced989c2ebf644
         file_results = codecs.open("./result_pages.txt", "a", "shift_jis", "ignore")
         # file_results = open("./result_pages.txt", "ab")
         print(len(pages))
