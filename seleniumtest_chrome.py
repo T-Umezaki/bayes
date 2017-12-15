@@ -1,13 +1,11 @@
+#!/usr/bin/python3
+
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest
 from selenium.webdriver.chrome.options import Options
 import codecs
-
-# HTTP_PROXY = 'user:pass@http://*:8080'
-# HTTPS_PROXY = 'user:pass@https://*:8080'
-# PROXY_AUTH = 'user:pass'
 
 
 class TestWebdriver(unittest.TestCase):
