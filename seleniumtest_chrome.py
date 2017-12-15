@@ -11,9 +11,6 @@ import codecs
 class TestWebdriver(unittest.TestCase):
     def setUp(self):
         chromeOptions = Options()
-        # chromeOptions = webdriver.ChromeOptions()
-        # chromeOptions.add_argument("--proxy-server=" + HTTP_PROXY)
-        # chromeOptions.add_argument("--proxy-auth=" + PROXY_AUTH)
         self.driver = webdriver.Chrome('.\chromedriver', chrome_options=chromeOptions)
         self.driver.implicitly_wait(30)
         self.base_url = "https://www.yahoo.co.jp/"
