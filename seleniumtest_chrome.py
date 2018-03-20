@@ -20,7 +20,7 @@ class TestWebdriver(unittest.TestCase):
     def test_webdriver(self):
         driver = self.driver
         driver.get(self.base_url + "/")
-        # 減っだページからリスト読み込み
+        # ヘッダページからリスト読み込み
         pages = driver.find_elements_by_xpath("//ul[@class='emphasis']/li/a")
         
         # encode でエラーが出るので、codec https://qiita.com/butada/items/33db39ced989c2ebf644
@@ -44,6 +44,9 @@ class TestWebdriver(unittest.TestCase):
             # 戻る
             driver.back()
             cnt_anker += 1
+            # デモ用
+            if cnt_anker > 3:
+                break
         driver.save_screenshot("screenshot.png")
         file_results.close()
 

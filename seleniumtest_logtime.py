@@ -26,7 +26,7 @@ class TestWebdriver(unittest.TestCase):
         element = driver.find_element_by_name("username")
         element.send_keys("1013387")
         element = driver.find_element_by_name("password")
-        element.send_keys("***")
+        element.send_keys("lt1013387")
         driver.find_element_by_xpath('//*[@id="loginButton"]/table/tbody/tr[5]/td/a').click()
         # ページ遷移
         # 対象Frameに遷移：はまったT T
